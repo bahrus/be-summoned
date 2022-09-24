@@ -3,7 +3,9 @@
 ```html
 <div be-summoned='{
     "as": "1afd1865-9f4d-4098-bea7-aab65ecc10e4",
-    "match": "someE"
+    "match": "someE",
+    "beVigilant": true,
+    "vft": "~" //weak ref
 }'>
     <p>
         <ul>
@@ -23,8 +25,9 @@
 
 ```JavaScript
 import {registrar} from 'be-summoned/registrar.js';
-registrar.whenDefined('1afd1865-9f4d-4098-bea7-aab65ecc10e4', weakRef => {
-
+registrar.addEventListener('1afd1865-9f4d-4098-bea7-aab65ecc10e4', e => {
+    const {value, summoner} = e.detail;
 });
 ```
 
+can be array
